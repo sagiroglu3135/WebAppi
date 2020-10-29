@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
 
+
             //internetConnection is true than callWebTask
             internetConnection=true;
             AsyncWebCall asyncWebCall= new AsyncWebCall(this);

@@ -2,12 +2,15 @@ package com.example.hatayli.webappi.AsyncTasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Toast;
 import com.example.hatayli.webappi.Adapters.mRecyclerViewAdapter;
 import com.example.hatayli.webappi.MainActivity;
 import com.example.hatayli.webappi.Models.User;
+import com.example.hatayli.webappi.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -106,6 +109,11 @@ public class AsyncWebCall extends AsyncTask<Void, Void, List<User>> {
             MainActivity.recyclerView.setAdapter(new mRecyclerViewAdapter(context,users));
             MainActivity.recyclerView.setLayoutManager(new LinearLayoutManager(context));
             MainActivity.shimmerFrameLayout.setVisibility(View.GONE);
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(MainActivity.recyclerView.getContext(),
+                    DividerItemDecoration.VERTICAL);
+            dividerItemDecoration.setDrawable(ContextCompat.getDrawable(context,R.drawable.recyclerview_divider));
+            MainActivity.recyclerView.addItemDecoration(dividerItemDecoration);
+
         }
         else{
             Toast.makeText(context,"An error occurred while processing your request",Toast.LENGTH_SHORT).show();
